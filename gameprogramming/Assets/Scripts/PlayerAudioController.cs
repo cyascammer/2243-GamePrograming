@@ -2,28 +2,35 @@ using UnityEngine;
 
 public class PlayerAudioController : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioPlayer audioPlayer;
+    
+    [Header("Audio Clips")]
     [SerializeField] private SoAudioClips walkAudioClips;
     [SerializeField] private SoAudioClips jumpAudioClips;
-    [SerializeField] private SoAudioClips jumpPadAudioClips;
-    [SerializeField] private SoAudioClips finishAudioClips;
+    [SerializeField] private SoAudioClips deathAudioClips;
 
-
-    public void PlayJumpSound()
+    public void PlayJump()
     {
-        audioSource.PlayOneShot(jumpAudioClips.GetAudioClip());
+        audioPlayer.PlaySound(jumpAudioClips, 0.5f);
     }
 
-    public void PlayWalkSound()
+    public void PlayWalk()
     {
-        audioSource.PlayOneShot(walkAudioClips.GetAudioClip());
+        audioPlayer.PlaySound(walkAudioClips, 0.3f);
     }
-    public void PlayJumpPadSound()
+
+    public void PlayFallImpact()
     {
-        audioSource.PlayOneShot(jumpPadAudioClips.GetAudioClip());
+        audioPlayer.PlaySound(walkAudioClips, 0.6f);
     }
-    public void PlayFinishSound()
+
+    public void PlayDeath()
     {
-        audioSource.PlayOneShot(finishAudioClips.GetAudioClip());
+        audioPlayer.PlaySound(deathAudioClips);
+    }
+    
+    public void MuteAudioSource()
+    {
+        audioPlayer.MuteAudioSource();
     }
 }

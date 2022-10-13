@@ -73,14 +73,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayerWalkSound
+    functionName: PlayWalkSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.21666667
-    functionName: PlayerWalkSound
+  - time: 0.11666667
+    functionName: PlayWalkSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

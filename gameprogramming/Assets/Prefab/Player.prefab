@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8807623583782796298}
   - component: {fileID: 8807623583782796307}
+  - component: {fileID: 1120139758733200961}
   - component: {fileID: 8807623583782796300}
   - component: {fileID: 8807623583782796303}
-  - component: {fileID: 9109114382602732286}
+  - component: {fileID: 1049634976371660101}
+  - component: {fileID: 1912705702263359009}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -50,6 +52,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 8807623584165039417}
+  audioController: {fileID: 7836823687822713230}
+--- !u!114 &1120139758733200961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807623583782796292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a366e688b4fd9418e084c962671c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muteDuration: 0.12
 --- !u!61 &8807623583782796300
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63,7 +79,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0075757504, y: 0.57}
+  m_Offset: {x: 0, y: 0.57}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -97,7 +113,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!82 &9109114382602732286
+--- !u!82 &1049634976371660101
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +123,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87f434dda92978e47ae41bc956c14d16, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -193,6 +209,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &1912705702263359009
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807623583782796292}
+  m_Enabled: 1
 --- !u!1 &8807623584165039419
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +229,7 @@ GameObject:
   - component: {fileID: 8807623584165039416}
   - component: {fileID: 8807623584165039417}
   - component: {fileID: 8807623584165039423}
-  - component: {fileID: 541447300431448105}
+  - component: {fileID: 7836823687822713230}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -274,9 +298,10 @@ MonoBehaviour:
   rb: {fileID: 8807623583782796303}
   playerCollider: {fileID: 8807623583782796300}
   animatorController: {fileID: 8807623584165039423}
-  audioController: {fileID: 541447300431448105}
+  audioController: {fileID: 7836823687822713230}
   movementSpeed: 5
   jumpForce: 8
+  doubleJumpForceMultiplier: 1.5
   timeBetweenJumps: 0.1
   coyoteTimeDuration: 0.15
   groundLayers:
@@ -296,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8807623585611382188}
---- !u!114 &541447300431448105
+--- !u!114 &7836823687822713230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,12 +330,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8807623584165039419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb1f8903f815d9479ff9ac4992f2c97, type: 3}
+  m_Script: {fileID: 11500000, guid: 1635aeef6a538f54f90cefd642326749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 9109114382602732286}
-  walkAudioClips: {fileID: 11400000, guid: 4f0804cc4dc482b47bd83ebc171af876, type: 2}
-  jumpAudioClips: {fileID: 11400000, guid: 595c8b54c6b931a46af4ef18677e7dbb, type: 2}
+  audioPlayer: {fileID: 1120139758733200961}
+  walkAudioClips: {fileID: 11400000, guid: 6bae2b26e2372f142b4fb0a684098754, type: 2}
+  jumpAudioClips: {fileID: 11400000, guid: dfe4f1ae7568074439b288a883742e0c, type: 2}
+  deathAudioClips: {fileID: 11400000, guid: 7224aa60fc549054bb00bf02e35e8fe3, type: 2}
 --- !u!1 &8807623585611382191
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +348,7 @@ GameObject:
   - component: {fileID: 8807623585611382190}
   - component: {fileID: 8807623585611382189}
   - component: {fileID: 8807623585611382188}
+  - component: {fileID: 8572109764667239567}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -416,3 +443,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8572109764667239567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807623585611382191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddf476d03279d84bb4494b0714954af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioController: {fileID: 7836823687822713230}

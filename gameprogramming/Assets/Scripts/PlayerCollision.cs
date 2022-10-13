@@ -3,22 +3,28 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private AudioSource deadSoundPLayer;
+    [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private ParticleSystem deathEffect;
 
     private Collider2D _playerCollider;
     private void Start()
     {
         _playerCollider = GetComponent<Collider2D>();
     }
+
+    public void Bounce(float jumpPadForce, float jumpTimeSleep)
+    {
+        playerController.Jump(jumpPadForce, jumpTimeSleep);
+    }
+
+    public void MuteFallImpactSounds()
+    {
+        audioController.MuteAudioSource();
+    }
     
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.TryGetComponent(out JumpPad jumpPad))
-        {
-            playerController.Jump(jumpPad.GetJumpPadForce(), jumpPad.GetAdditionalSleepJumpTime());
-            jumpPad.TriggerJumpPad();
-        }
-        else if (col.TryGetComponent(out Collectibles collectible))
+        if (col.TryGetComponent(out Collectibles collectible))
         {
             var collectibleType = collectible.GetCollectibleInfoOnContact();
 
@@ -40,9 +46,8 @@ public class PlayerCollision : MonoBehaviour
         if (_playerCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))
         {
             playerController.TakeDamage();
+            deathEffect.Play();
         }
-
-
 
         #region Unused
 
